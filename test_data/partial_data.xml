@@ -1,0 +1,17 @@
+<root>
+  <application-reference>
+    <document-id format="epo">
+      <country>US</country>
+      <doc-number></doc-number>
+    </document-id>
+    <document-id>
+      <doc-number>11111</doc-number>
+    </document-id>
+    <document-id format="original">
+      <country>US</country>
+    </document-id>
+    <document-id format="epo">
+      <doc-number>22222</doc-number>
+    </document-id>
+  </application-reference>
+</root>

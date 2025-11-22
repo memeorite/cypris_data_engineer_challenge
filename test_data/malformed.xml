@@ -1,0 +1,10 @@
+<root>
+  <application-reference>
+    <document-id format="epo">
+      <doc-number>12345</doc-number>
+    </document-id>
+    <document-id format="original">
+      <doc-number>67890
+    </document-id>
+  </application-reference>
+</root>

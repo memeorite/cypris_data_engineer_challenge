@@ -1,0 +1,18 @@
+<root>
+  <application-reference ucid="US-AAAA-A">
+    <document-id format="original">
+      <doc-number>111111</doc-number>
+    </document-id>
+    <document-id format="epo">
+      <doc-number>222222</doc-number>
+    </document-id>
+  </application-reference>
+  <application-reference ucid="US-BBBB-B">
+    <document-id format="epo">
+      <doc-number>333333</doc-number>
+    </document-id>
+    <document-id format="original">
+      <doc-number>444444</doc-number>
+    </document-id>
+  </application-reference>
+</root>
