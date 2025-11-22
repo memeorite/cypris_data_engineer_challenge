@@ -16,18 +16,24 @@ Within each priority group, document order is preserved.
 Requires Python 3.8+. Install dependencies using [uv](https://github.com/astral-sh/uv):
 
 ```bash
-# Install uv
+# Install uv (if not already installed)
 curl -LsSf https://astral.sh/uv/install.sh | sh  # macOS/Linux
 # or
 powershell -c "irm https://astral.sh/uv/install.ps1 | iex"  # Windows
 
 # Set up project
 uv venv
-uv pip install -e ".[dev]"
+uv pip install pytest
 
 # Activate venv
-.venv\Scripts\activate  # Windows
 source .venv/bin/activate  # macOS/Linux
+# or
+.venv\Scripts\activate  # Windows
+```
+
+Alternative (if you want editable install):
+```bash
+uv pip install -e ".[dev]"
 ```
 
 ## Usage
