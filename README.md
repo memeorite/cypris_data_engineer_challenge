@@ -31,10 +31,7 @@ source .venv/bin/activate  # macOS/Linux
 .venv\Scripts\activate  # Windows
 ```
 
-Alternative (if you want editable install):
-```bash
-uv pip install -e ".[dev]"
-```
+Note: No package installation is needed to use the tool - it only uses Python's standard library. The `pytest` dependency is only for running tests.
 
 ## Usage
 
