@@ -227,12 +227,12 @@ class TestErrorHandling:
 
     def test_invalid_xml(self):
         """Test invalid XML content."""
-        with pytest.raises(ValueError, match="Input must be either"):
+        with pytest.raises(FileReadError, match="No such file or directory"):
             extract_doc_numbers('This is not XML')
 
     def test_nonexistent_file(self):
         """Test nonexistent file raises FileReadError."""
-        with pytest.raises(ValueError, match="Input must be either"):
+        with pytest.raises(FileReadError, match="No such file or directory"):
             extract_doc_numbers('nonexistent.xml')
 
     def test_directory_instead_of_file(self):

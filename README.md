@@ -94,7 +94,9 @@ pytest test_extract_doc_numbers.py::TestPriorityOrdering -v  # Specific class
 - Whitespace is trimmed from doc-number values
 
 **Input Detection:**
-- Allows for both XML strings and file paths as input, automatically detecting which based off of starting character `<`
+- Allows for both XML strings and file paths as input, automatically detecting which based off of starting character `
+  - Considered adding a parameter for explicit control over input type but decided against it for simplicity
+  - The tradeoff there is that it's a bit more straightforward to give error feedback with explicit input type
 - Files are assumed to be UTF-8 encoded
 
 **Error Handling:**

@@ -85,14 +85,12 @@ def extract_doc_numbers(source: Union[str, Path]) -> List[str]:
 
     if source_str.strip().startswith('<'):
         xml_content = source_str
-    elif path.exists():
+    else:
         try:
             xml_content = path.read_text(encoding='utf-8')
             logger.info(f"Read file: {source}")
         except Exception as e:
-            raise FileReadError(f"Failed to read {source}: {e}") from e
-    else:
-        raise ValueError("Input must be either the path to an existing file or an XML string starting with '<'.")
+            raise FileReadError(f"Failed to read {source}, input must either be a file which exists or an XML string starting with '<': {e}") from e
 
     # Parse XML
     try:
