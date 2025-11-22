@@ -38,6 +38,9 @@ class FileReadError(Exception):
     """Raised when file cannot be read."""
     pass
 
+class FileNotFound(Exception):
+    """Raised when file cannot be read."""
+    pass
 
 def _get_priority(format_attr: str, load_source_attr: str) -> int:
     """
@@ -88,10 +91,8 @@ def extract_doc_numbers(source: Union[str, Path]) -> List[str]:
             logger.info(f"Read file: {source}")
         except Exception as e:
             raise FileReadError(f"Failed to read {source}: {e}") from e
-    elif '/' in source_str or '\\' in source_str or source_str.endswith(('.xml', '.txt')):
-        raise FileReadError(f"File not found: {source}")
     else:
-        xml_content = source_str
+        raise ValueError("Input must be either the path to an existing file or an XML string starting with '<'.")
 
     # Parse XML
     try:

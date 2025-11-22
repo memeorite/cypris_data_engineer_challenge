@@ -8,7 +8,6 @@ Tests verify:
 """
 
 import pytest
-from pathlib import Path
 from extract_doc_numbers import extract_doc_numbers, XMLParsingError, FileReadError
 
 
@@ -228,12 +227,12 @@ class TestErrorHandling:
 
     def test_invalid_xml(self):
         """Test invalid XML content."""
-        with pytest.raises(XMLParsingError):
+        with pytest.raises(ValueError, match="Input must be either"):
             extract_doc_numbers('This is not XML')
 
     def test_nonexistent_file(self):
         """Test nonexistent file raises FileReadError."""
-        with pytest.raises(FileReadError, match="not found"):
+        with pytest.raises(ValueError, match="Input must be either"):
             extract_doc_numbers('nonexistent.xml')
 
     def test_directory_instead_of_file(self):

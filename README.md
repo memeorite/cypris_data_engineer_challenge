@@ -91,10 +91,7 @@ pytest test_extract_doc_numbers.py::TestPriorityOrdering -v  # Specific class
 - Whitespace is trimmed from doc-number values
 
 **Input Detection:**
-- Allows for both XML strings and file paths as input, automatically detecting which using the following rules
-  - Strings starting with `<` are treated as XML content
-  - Existing file paths are read as files
-  - Strings ending in `.xml` or `.txt` or containing `/` or `\` are treated as file paths
+- Allows for both XML strings and file paths as input, automatically detecting which based off of starting character `<`
 - Files are assumed to be UTF-8 encoded
 
 **Error Handling:**
@@ -105,64 +102,10 @@ pytest test_extract_doc_numbers.py::TestPriorityOrdering -v  # Specific class
 ## Project Structure
 
 ```
-├── extract_doc_numbers.py       # Main module (~145 lines)
-├── test_extract_doc_numbers.py  # Test suite (23 tests)
+├── extract_doc_numbers.py       # Main module
+├── test_extract_doc_numbers.py  # Test suite
 ├── sample_patent.xml            # Sample input file
 ├── test_data/                   # Additional test files
 ├── pyproject.toml              # Project config (uv/pytest)
 └── README.md                   # This file
 ```
-
-## Examples
-
-### All Priority Levels
-
-```python
-xml = """
-<root>
-  <document-id format="epo" load-source="patent-office">
-    <doc-number>P1</doc-number>  <!-- Priority 1 -->
-  </document-id>
-  <document-id format="epo">
-    <doc-number>P2</doc-number>  <!-- Priority 2 -->
-  </document-id>
-  <document-id load-source="patent-office">
-    <doc-number>P3</doc-number>  <!-- Priority 3 -->
-  </document-id>
-  <document-id>
-    <doc-number>P4</doc-number>  <!-- Priority 4 -->
-  </document-id>
-</root>
-"""
-extract_doc_numbers(xml)  # ['P1', 'P2', 'P3', 'P4']
-```
-
-### Error Handling
-
-```python
-from extract_doc_numbers import extract_doc_numbers, XMLParsingError, FileReadError
-
-try:
-    doc_numbers = extract_doc_numbers('missing.xml')
-except FileReadError as e:
-    print(f"File error: {e}")
-
-try:
-    doc_numbers = extract_doc_numbers('<invalid>xml')
-except XMLParsingError as e:
-    print(f"Parse error: {e}")
-```
-
-## Design Decisions
-
-**Simplicity:** Standard library only (xml.etree.ElementTree) - no external dependencies for core functionality.
-
-**Priority Logic:** Simple integer priorities (1-4) with tuple sorting make the logic clear and maintainable.
-
-**Input Flexibility:** Supports both file paths and XML strings without requiring explicit flags.
-
-**Production Ready:** Logging, custom exceptions, comprehensive tests, and proper error messages.
-
-## Author
-
-Cypris Data Engineer Challenge - 2025

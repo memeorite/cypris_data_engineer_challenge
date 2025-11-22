@@ -3,7 +3,7 @@ name = "xml-doc-number-extractor"
 version = "1.0.0"
 description = "Extract doc-number values from patent XML documents with priority-based ordering"
 authors = [
-    {name = "Cypris Data Engineer Candidate"}
+    {name = "Nate White"}
 ]
 readme = "README.md"
 requires-python = ">=3.8"
